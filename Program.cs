@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace EncontroRemoto
 {   
@@ -7,6 +8,7 @@ namespace EncontroRemoto
     {
         static void Main(string[] args)
         {
+            List<PessoaFisica> listaPf = new List<PessoaFisica>();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.BackgroundColor = ConsoleColor.Black;
@@ -29,9 +31,15 @@ namespace EncontroRemoto
                 Console.WriteLine(@$"
 =====================================        
 |   Escolha uma das opções abaixo   |
+|           PESSOA FÍSICA           |
+|    1 - Cadastrar Pessoa Física    |   
+|    2 - Listar Pessoa Física       |
+|    3 - Remover Pessoa Física      |
 |                                   |
-|        1 - Pessoa Física          |   
-|        2 - Pessoa Jurídica        |
+|           PESSOA JURÍDICA         |
+|    4 - Cadastrar Pessoa Jurídica  |   
+|    5 - Listar Pessoa Jurídica     |
+|    6 - Remover Pessoa Jurídica    |
 |                                   |
 |        0 - Sair                   |
 ===================================== 
@@ -43,22 +51,38 @@ namespace EncontroRemoto
                 {
                     case "1":
                         {
-                            Endereco endpf = new Endereco();
-                            endpf.logradouro = "X";
-                            endpf.numero = 100;
-                            endpf.complemento = "Próximo ao Senai";
-                            endpf.enderecoComercial = false;
+                            Endereco endPf = new Endereco();
+                            
+                            Console.WriteLine($"Digite seu logradouro");  
+                            endPf. logradouro = Console.ReadLine();
+                            
+                            Console.WriteLine($"Digite o número");
+                            endPf. numero = int.Parse(Console.ReadLine());
+                            
+                            Console.WriteLine($"Digite o complemento (aperte ENTER para vazio");
+                            endPf. complemento = Console.ReadLine();
+
+                            Console.WriteLine($"Este endereço é comercial? S/N");   
+                            string endComercial = Console.ReadLine().ToUpper();
+                            if(endComercial == "S")
+                            {
+                                endPf.enderecoComercial = true;
+                            }
+                            else
+                            {
+                                endPf.enderecoComercial = false;
+                            }
 
                             PessoaFisica novapf = new PessoaFisica();
-
-                            novapf.endereco = endpf;
-                            novapf.cpf = "123456789";
-                            novapf.rendimento = 1500;
-                            novapf.dataNascimento = new DateTime(1995, 08, 05);
-                            novapf.nome = "Eduardo";
+                            Console.WriteLine($"Digite seu CPF(somente números");
+                            novapf.cpf = Console.ReadLine();
                             
+                            Console.WriteLine($"Digite seu nome");
+                            novapf.nome = Console.ReadLine();
                             
-
+                            Console.WriteLine($"Digite sua data de nascimento");
+                            novapf.dataNascimento = DateTime.Parse(Console.ReadLine());
+                            
                             PessoaFisica pf = new PessoaFisica();
                             //pf.ValidarDataNascimento(pf.dataNascimento);
                             
@@ -70,6 +94,8 @@ namespace EncontroRemoto
                             if (idadeValida == true)
                             {
                                 Console.WriteLine($"Cadastro Aprovado.");
+                                listaPf.Add(novapf);
+                                Console.WriteLine(pf.PagarImposto(novapf.rendimento).ToString("N2")); 
                             }
                             else
                             {
@@ -85,8 +111,33 @@ namespace EncontroRemoto
                             //Console.WriteLine("Rua: " + novapf.endereco.logradouro + novapf.endereco.numero); 
                             break;
                         }
-
-                    case"2":
+                    case "2":
+                    {
+                    
+                        foreach (var cadaItem in listaPf)
+                        {
+                            Console.WriteLine($"{cadaItem.nome}, {cadaItem.nome}, {cadaItem.cpf}, {cadaItem.dataNascimento}");
+                        }
+                        break;
+                    }
+                    case "3":
+                    {
+                    
+                        Console.WriteLine($"Digite o CPF que deseja remover");
+                        string cpfProcurado = Console.ReadLine();
+                        PessoaFisica pessoaEncontrada = listaPf.Find(cadaItem => cadaItem.cpf == cpfProcurado);
+                        if(pessoaEncontrada != null)
+                        {
+                            listaPf.Remove(pessoaEncontrada);
+                            Console.WriteLine($"Cadastro Removido");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"CPF não encontrado");
+                        }
+                        break;
+                    }
+                    case"4":
                         {
                             PessoaJuridica pj = new PessoaJuridica();
                             PessoaJuridica novapj = new PessoaJuridica();
