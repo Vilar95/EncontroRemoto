@@ -202,7 +202,7 @@ namespace EncontroRemoto
                     case "6":
                     {
                     
-                        Console.WriteLine($"Digite o CPF que deseja remover");
+                        Console.WriteLine($"Digite o CNPJ que deseja remover");
                         string cnpjProcurado = Console.ReadLine();
                         PessoaJuridica empresaEncontrada = listaPJ.Find(cadaItem => cadaItem.cnpj == cnpjProcurado);
                         if(empresaEncontrada != null)
