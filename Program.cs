@@ -8,7 +8,8 @@ namespace EncontroRemoto
     {
         static void Main(string[] args)
         {
-            List<PessoaFisica> listaPf = new List<PessoaFisica>();
+            List<PessoaFisica> listaPF = new List<PessoaFisica>();
+            List<PessoaJuridica> listaPJ = new List<PessoaJuridica>();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.BackgroundColor = ConsoleColor.Black;
@@ -33,12 +34,12 @@ namespace EncontroRemoto
 |   Escolha uma das opções abaixo   |
 |           PESSOA FÍSICA           |
 |    1 - Cadastrar Pessoa Física    |   
-|    2 - Listar Pessoa Física       |
+|    2 - Lista Pessoa Física        |
 |    3 - Remover Pessoa Física      |
 |                                   |
 |           PESSOA JURÍDICA         |
 |    4 - Cadastrar Pessoa Jurídica  |   
-|    5 - Listar Pessoa Jurídica     |
+|    5 - Lista Pessoa Jurídica      |
 |    6 - Remover Pessoa Jurídica    |
 |                                   |
 |        0 - Sair                   |
@@ -51,51 +52,52 @@ namespace EncontroRemoto
                 {
                     case "1":
                         {
-                            Endereco endPf = new Endereco();
+                            Endereco endPF = new Endereco();
                             
-                            Console.WriteLine($"Digite seu logradouro");  
-                            endPf. logradouro = Console.ReadLine();
+                            Console.WriteLine($"Digite seu logradouro.");  
+                            endPF.logradouro = Console.ReadLine();
                             
-                            Console.WriteLine($"Digite o número");
-                            endPf. numero = int.Parse(Console.ReadLine());
+                            Console.WriteLine($"Digite o número.");
+                            endPF.numero = int.Parse(Console.ReadLine());
                             
-                            Console.WriteLine($"Digite o complemento (aperte ENTER para vazio");
-                            endPf. complemento = Console.ReadLine();
+                            Console.WriteLine($"Digite o complemento (Aperte ENTER para vazio.)");
+                            endPF.complemento = Console.ReadLine();
 
-                            Console.WriteLine($"Este endereço é comercial? S/N");   
+                            Console.WriteLine($"Este endereço é comercial? S/N.");   
                             string endComercial = Console.ReadLine().ToUpper();
+                            
                             if(endComercial == "S")
                             {
-                                endPf.enderecoComercial = true;
+                                endPF.enderecoComercial = true;
                             }
                             else
                             {
-                                endPf.enderecoComercial = false;
+                                endPF.enderecoComercial = false;
                             }
 
-                            PessoaFisica novapf = new PessoaFisica();
-                            Console.WriteLine($"Digite seu CPF(somente números");
-                            novapf.cpf = Console.ReadLine();
+                            PessoaFisica novaPF = new PessoaFisica();
+                            Console.WriteLine($"Digite seu CPF(Somente números).");
+                            novaPF.cpf = Console.ReadLine();
                             
-                            Console.WriteLine($"Digite seu nome");
-                            novapf.nome = Console.ReadLine();
+                            Console.WriteLine($"Digite seu nome.");
+                            novaPF.nome = Console.ReadLine();
                             
-                            Console.WriteLine($"Digite sua data de nascimento");
-                            novapf.dataNascimento = DateTime.Parse(Console.ReadLine());
+                            Console.WriteLine($"Digite sua data de nascimento.");
+                            novaPF.dataNascimento = DateTime.Parse(Console.ReadLine());
                             
                             PessoaFisica pf = new PessoaFisica();
                             //pf.ValidarDataNascimento(pf.dataNascimento);
                             
-                            Console.WriteLine(pf.PagarImposto(novapf.rendimento).ToString("N2")); 
+                            Console.WriteLine(pf.PagarImposto(novaPF.rendimento).ToString("N2")); 
                             
-                            bool idadeValida = pf.ValidarDataNascimento(novapf.dataNascimento);
+                            bool idadeValida = pf.ValidarDataNascimento(novaPF.dataNascimento);
                             Console.WriteLine(idadeValida);
                             
                             if (idadeValida == true)
                             {
                                 Console.WriteLine($"Cadastro Aprovado.");
-                                listaPf.Add(novapf);
-                                Console.WriteLine(pf.PagarImposto(novapf.rendimento).ToString("N2")); 
+                                listaPF.Add(novaPF);
+                                Console.WriteLine(pf.PagarImposto(novaPF.rendimento).ToString("N2")); 
                             }
                             else
                             {
@@ -114,9 +116,9 @@ namespace EncontroRemoto
                     case "2":
                     {
                     
-                        foreach (var cadaItem in listaPf)
+                        foreach (var cadaItem in listaPF)
                         {
-                            Console.WriteLine($"{cadaItem.nome}, {cadaItem.nome}, {cadaItem.cpf}, {cadaItem.dataNascimento}");
+                            Console.WriteLine($"{cadaItem.nome}, {cadaItem.cpf}, {cadaItem.dataNascimento}");
                         }
                         break;
                     }
@@ -125,10 +127,10 @@ namespace EncontroRemoto
                     
                         Console.WriteLine($"Digite o CPF que deseja remover");
                         string cpfProcurado = Console.ReadLine();
-                        PessoaFisica pessoaEncontrada = listaPf.Find(cadaItem => cadaItem.cpf == cpfProcurado);
+                        PessoaFisica pessoaEncontrada = listaPF.Find(cadaItem => cadaItem.cpf == cpfProcurado);
                         if(pessoaEncontrada != null)
                         {
-                            listaPf.Remove(pessoaEncontrada);
+                            listaPF.Remove(pessoaEncontrada);
                             Console.WriteLine($"Cadastro Removido");
                         }
                         else
@@ -139,34 +141,81 @@ namespace EncontroRemoto
                     }
                     case"4":
                         {
+                            Endereco endPJ = new Endereco();
+                            Console.WriteLine($"Digite seu logradouro.");  
+                            endPJ.logradouro = Console.ReadLine();
+                            
+                            Console.WriteLine($"Digite o número.");
+                            endPJ.numero = int.Parse(Console.ReadLine());
+                            
+                            Console.WriteLine($"Digite o complemento (Aperte ENTER para vazio.)");
+                            endPJ.complemento = Console.ReadLine();
+
+                            Console.WriteLine($"Este endereço é comercial? S/N.");   
+                            string endComercial = Console.ReadLine().ToUpper();
+                            
+                            if(endComercial == "S")
+                            {
+                                endPJ.enderecoComercial = true;
+                            }
+                            else
+                            {
+                                endPJ.enderecoComercial = false;
+                            }
+                            PessoaJuridica novaPJ = new PessoaJuridica();
+                            
+                            Console.WriteLine($"Digite seu CNPJ(Somente números).");
+                            novaPJ.cnpj = Console.ReadLine();
+
+                            Console.WriteLine($"Digite seu nome.");
+                            novaPJ.nome = Console.ReadLine();
+                            
+                            Console.WriteLine($"Digite a Razão Social.");
+                            novaPJ.razaoSocial = Console.ReadLine();
+                            
                             PessoaJuridica pj = new PessoaJuridica();
-                            PessoaJuridica novapj = new PessoaJuridica();
+                            
+                            Console.WriteLine(pj.PagarImposto(novaPJ.rendimento).ToString("N2")); 
 
-                            Endereco endpj = new Endereco();
-                            endpj.logradouro = "X";
-                            endpj.numero = 100;
-                            endpj.complemento = "Próximo ao Senai";
-                            endpj.enderecoComercial = true;
-
-                            novapj.endereco = endpj;
-                            novapj.cnpj = "11123456790001";
-                            novapj.rendimento = 8000;
-                            novapj.razaoSocial = "Pessoa Jurídica";
-
-                            Console.WriteLine(pj.PagarImposto(pj.rendimento).ToString("N2")); 
-
-                            if (pj.ValidarCNPJ(novapj.cnpj))
+                            if (pj.ValidarCNPJ(novaPJ.cnpj))
                             {
                                 Console.WriteLine("CNPJ Válido.");
+                                Console.WriteLine($"Cadastro Aprovado.");
+                                listaPJ.Add(novaPJ);
+                                Console.WriteLine(pj.PagarImposto(novaPJ.rendimento).ToString("N2"));
                             }
                             else
                             {
                                 Console.WriteLine("CNPJ inválido.");
-
+                                Console.WriteLine($"Cadastro Não Aprovado.");
                             }
                             break;
                         }
-        
+                    case "5":
+                        {
+                            foreach (var cadaItem in listaPJ)
+                            {
+                                Console.WriteLine($"{cadaItem.cnpj}, {cadaItem.nome}, {cadaItem.razaoSocial}");
+                            }
+                            break;
+                        }
+                    case "6":
+                    {
+                    
+                        Console.WriteLine($"Digite o CPF que deseja remover");
+                        string cnpjProcurado = Console.ReadLine();
+                        PessoaJuridica empresaEncontrada = listaPJ.Find(cadaItem => cadaItem.cnpj == cnpjProcurado);
+                        if(empresaEncontrada != null)
+                        {
+                            listaPJ.Remove(empresaEncontrada);
+                            Console.WriteLine($"Cadastro Removido");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"CNPJ não encontrado");
+                        }
+                        break;
+                    }
                     case "0":
                         {   
                             Console.WriteLine($"Obrigado por utilizar o sistema. ");
