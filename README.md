@@ -31,7 +31,7 @@
  <img align="center" alt="Csharp" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
   - C#
   </br></br>
-•        É uma linguagem de programação orientada a objetos, que foi desenvolvida pela Microsoft e por isso muito eficiente em progrmas e serrviços.
+•        Linguagem de programação orientada a objetos, que foi desenvolvida pela Microsoft e por isso muito eficiente em progrmas e serrviços.
 </div>
 
 ## - Organização do projeto:
