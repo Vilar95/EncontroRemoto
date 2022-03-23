@@ -39,15 +39,14 @@
 
 ## - Pré-requisitos de instalação:
 
-•        Ter instalado o Visual Studio Code no seu computador.</br>
-         </br>Obs: Caso não tenha o programa instalado pode ser adquirido nesse link: [Visual Studio Code](https://code.visualstudio.com/)</br>
-         </br>
-•        Faça o download do programa "EncontroRemoto" no GitHub. https://github.com/vilar95/EncontroRemoto </br>
+•        Ter instalado o [Visual Studio Code](https://code.visualstudio.com/) no seu computador.</br>
+        
+•        Faça o download do programa [EncontroRemoto](https://github.com/vilar95/EncontroRemoto) no GitHub.  </br>
          </br>Aperte o botão "Code", onde aparecerá a opção para fazer o download, click no botão "Download ZIP".</br>
 </br><img height="450em" align="EncontroRemoto" alt="Download" src="https://github.com/vilar95/EncontroRemoto/blob/main/imagens.github/imagens/Download.png">
          </br></br>
-•        Depois de efetuar o download, crie uma pasta de sua escolha, retire os arquivo da pasta ZIP, coloque na pasta escolhida, 
-</br>abra a pasta e click com o botão direito do mouse, depois selecione a opção "Abrir com Code", como na imagem a seguir.</br>
+•        Depois de efetuar o download, crie uma pasta de sua escolha, descompacte a pasta ZIP para a pasta escolhida, 
+abra a pasta e click com o botão direito do mouse, selecione a opção "Abrir com Code", como na imagem a seguir.</br>
 </br><img height="450em" align="EncontroRemoto" alt="AbrirCode" src="https://github.com/vilar95/EncontroRemoto/blob/main/imagens.github/imagens/AbrirCode2.png">
 ## - Execução da aplicação: 
 
