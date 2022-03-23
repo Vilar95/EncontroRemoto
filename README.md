@@ -40,7 +40,7 @@
 ## - Pré-requisitos de instalação:
 
 •        Ter instalado o Visual Studio Code no seu computador.</br>
-         </br>Obs: Caso não tenha o programa instalado pode ser adquirido nesse link: https://code.visualstudio.com/ </br>
+         </br>Obs: Caso não tenha o programa instalado pode ser adquirido nesse link: [Visual Studio Code](https://code.visualstudio.com/)</br>
          </br>
 •        Faça o download do programa "EncontroRemoto" no GitHub. https://github.com/vilar95/EncontroRemoto </br>
          </br>Aperte o botão "Code", onde aparecerá a opção para fazer o download, click no botão "Download ZIP".</br>
